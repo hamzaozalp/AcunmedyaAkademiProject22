@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace AcunmedyaAkademiProject2._0.Context
 {
@@ -16,5 +17,12 @@ namespace AcunmedyaAkademiProject2._0.Context
         public DbSet<Service> Services { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+
+
     }
 }

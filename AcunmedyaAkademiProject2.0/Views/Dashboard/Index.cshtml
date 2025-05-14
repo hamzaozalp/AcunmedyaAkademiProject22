@@ -1,0 +1,654 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <!-- Özet Kartları -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Toplam Sipariş
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">1,248</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Gelir
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">₺215,000</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Tamamlanan
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">78%</div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 78%"
+                                             aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Bekleyen Siparişler
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="row">
+        <!-- Sol Taraf - Ana Grafikler -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Aylık Kazanç Özeti</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Seçenekler:</div>
+                            <a class="dropdown-item" href="#">Detaylar</a>
+                            <a class="dropdown-item" href="#">PDF Olarak İndir</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Rapor Oluştur</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="myAreaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ Taraf - Pasta Grafik -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Gelir Kaynakları</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Seçenekler:</div>
+                            <a class="dropdown-item" href="#">Detaylar</a>
+                            <a class="dropdown-item" href="#">PDF Olarak İndir</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Rapor Oluştur</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                        <canvas id="myPieChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-primary"></i> Online
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-success"></i> Mağaza
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-info"></i> Aracı
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İki Ana Tablo Satırı -->
+    <div class="row">
+        <!-- Son Siparişler Tablosu -->
+        <div class="col-xl-8 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Son Siparişler</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Seçenekler:</div>
+                            <a class="dropdown-item" href="#">Tüm Siparişler</a>
+                            <a class="dropdown-item" href="#">Excel'e Aktar</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">PDF Raporu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Sipariş ID</th>
+                                    <th>Müşteri</th>
+                                    <th>Ürün</th>
+                                    <th>Tarih</th>
+                                    <th>Tutar</th>
+                                    <th>Durum</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#5469</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="/images/avatar/1.jpg" class="rounded-circle mr-2" width="35" alt="">
+                                            <div>Louis Stanley</div>
+                                        </div>
+                                    </td>
+                                    <td>iMax Pro</td>
+                                    <td>10.05.2025</td>
+                                    <td>₺6,542</td>
+                                    <td><span class="badge bg-success">Tamamlandı</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Detay</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Yazdır</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#5468</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="/images/avatar/2.jpg" class="rounded-circle mr-2" width="35" alt="">
+                                            <div>Gregory Dixon</div>
+                                        </div>
+                                    </td>
+                                    <td>iPad Pro 13</td>
+                                    <td>09.05.2025</td>
+                                    <td>₺3,250</td>
+                                    <td><span class="badge bg-success">Tamamlandı</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Detay</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Yazdır</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#5467</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="/images/avatar/3.jpg" class="rounded-circle mr-2" width="35" alt="">
+                                            <div>Catherine Dixon</div>
+                                        </div>
+                                    </td>
+                                    <td>SSD 1TB</td>
+                                    <td>09.05.2025</td>
+                                    <td>₺1,200</td>
+                                    <td><span class="badge bg-success">Tamamlandı</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Detay</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Yazdır</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#5466</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="/images/avatar/4.jpg" class="rounded-circle mr-2" width="35" alt="">
+                                            <div>Mary Silva</div>
+                                        </div>
+                                    </td>
+                                    <td>Magic Mouse</td>
+                                    <td>08.05.2025</td>
+                                    <td>₺860</td>
+                                    <td><span class="badge bg-warning">Beklemede</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Detay</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Yazdır</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#5465</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="/images/avatar/6.jpg" class="rounded-circle mr-2" width="35" alt="">
+                                            <div>Johnny Stephens</div>
+                                        </div>
+                                    </td>
+                                    <td>4K Monitor</td>
+                                    <td>08.05.2025</td>
+                                    <td>₺4,890</td>
+                                    <td><span class="badge bg-success">Tamamlandı</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Detay</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Yazdır</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-3">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Önceki</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Sonraki</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağdaki Diğer Bilgiler -->
+        <div class="col-xl-4 mb-4">
+            <!-- En Popüler Ürünler -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">En Çok Satan Ürünler</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- En Son Aktiviteler -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Son Aktiviteler</h6>
+                </div>
+                <div class="card-body">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-marker">
+                                <div class="timeline-item-marker-indicator bg-success"></div>
+                            </div>
+                            <div class="timeline-item-content">
+                                <div class="fw-bold text-dark">Yeni sipariş alındı</div>
+                                <div class="text-muted">30 dakika önce</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-marker">
+                                <div class="timeline-item-marker-indicator bg-primary"></div>
+                            </div>
+                            <div class="timeline-item-content">
+                                <div class="fw-bold text-dark">Kargo gönderildi</div>
+                                <div class="text-muted">1 saat önce</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-marker">
+                                <div class="timeline-item-marker-indicator bg-warning"></div>
+                            </div>
+                            <div class="timeline-item-content">
+                                <div class="fw-bold text-dark">Kritik stok uyarısı</div>
+                                <div class="text-muted">2 saat önce</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-marker">
+                                <div class="timeline-item-marker-indicator bg-info"></div>
+                            </div>
+                            <div class="timeline-item-content">
+                                <div class="fw-bold text-dark">Bakım tamamlandı</div>
+                                <div class="text-muted">4 saat önce</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-marker">
+                                <div class="timeline-item-marker-indicator bg-secondary"></div>
+                            </div>
+                            <div class="timeline-item-content">
+                                <div class="fw-bold text-dark">Sistem güncellemesi</div>
+                                <div class="text-muted">Dün</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Son Satır - Hızlı İstatistikler -->
+    <div class="row">
+        <!-- Sol -->
+        <div class="col-lg-6 mb-4">
+            <!-- Proje Durum Kartı -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Projeler</h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="small font-weight-bold">Sunucu Migrasyonu <span class="float-right">20%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Satış Takibi <span class="float-right">40%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Müşteri Veritabanı <span class="float-right">60%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Ödeme Detayları <span class="float-right">80%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Hesap Kurulumu <span class="float-right">Tamamlandı!</span></h4>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ -->
+        <div class="col-lg-6 mb-4">
+            <!-- Bilgi Kartları -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Departman Performansı</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card bg-primary text-white shadow">
+                                <div class="card-body">
+                                    Satış
+                                    <div class="text-white-50 small">%87</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="card bg-success text-white shadow">
+                                <div class="card-body">
+                                    Pazarlama
+                                    <div class="text-white-50 small">%92</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="card bg-info text-white shadow">
+                                <div class="card-body">
+                                    Müşteri Hizmetleri
+                                    <div class="text-white-50 small">%82</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="card bg-warning text-white shadow">
+                                <div class="card-body">
+                                    Sevkiyat
+                                    <div class="text-white-50 small">%73</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Alan Grafiği
+            var ctx = document.getElementById('myAreaChart').getContext('2d');
+            var myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"],
+                    datasets: [{
+                        label: "Kazanç",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(78, 115, 223, 0.05)",
+                        borderColor: "rgba(78, 115, 223, 1)",
+                        pointRadius: 3,
+                        pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                        pointBorderColor: "rgba(78, 115, 223, 1)",
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+                        fill: true
+                    }],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                callback: function (value) {
+                                    return '₺' + value;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Pasta Grafiği
+            var ctx2 = document.getElementById('myPieChart').getContext('2d');
+            var myPieChart = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ["Online", "Mağaza", "Aracı"],
+                    datasets: [{
+                        data: [55, 30, 15],
+                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                        hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                        hoverBorderColor: "rgba(234, 236, 244, 1)",
+                    }],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+
+            // Bar Grafiği
+            var ctx3 = document.getElementById('barChart').getContext('2d');
+            var barChart = new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: ["iMac Pro", "iPad Pro", "Magic Mouse", "SSD 1TB", "Monitor 4K"],
+                    datasets: [{
+                        label: "Satış",
+                        backgroundColor: "#4e73df",
+                        hoverBackgroundColor: "#2e59d9",
+                        borderColor: "#4e73df",
+                        data: [215, 312, 251, 841, 821],
+                    }],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: "rgb(234, 236, 244)",
+                                zeroLineColor: "rgb(234, 236, 244)",
+                                drawBorder: false,
+                                borderDash: [2],
+                                zeroLineBorderDash: [2]
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Timeline stili ekleyin
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                // Kenarlık ve boşluk ekleyin
+                item.style.padding = '1rem 0';
+                item.style.display = 'flex';
+
+                // İlk öğe değilse üst kenarlık ekleyin
+                if (index > 0) {
+                    item.style.borderTop = '1px solid #e3e6f0';
+                }
+
+                // Marker style
+                const marker = item.querySelector('.timeline-item-marker');
+                marker.style.display = 'flex';
+                marker.style.alignItems = 'center';
+                marker.style.justifyContent = 'center';
+                marker.style.height = '100%';
+                marker.style.width = '3rem';
+
+                const indicator = item.querySelector('.timeline-item-marker-indicator');
+                indicator.style.height = '0.75rem';
+                indicator.style.width = '0.75rem';
+                indicator.style.borderRadius = '100%';
+
+                // Content style
+                const content = item.querySelector('.timeline-item-content');
+                content.style.padding = '0 0.5rem';
+            });
+        });
+    </script>
+}
+
+<style>
+    /* Özel CSS Stilleri */
+    .border-left-primary {
+        border-left: 0.25rem solid #4e73df !important;
+    }
+
+    .border-left-success {
+        border-left: 0.25rem solid #1cc88a !important;
+    }
+
+    .border-left-info {
+        border-left: 0.25rem solid #36b9cc !important;
+    }
+
+    .border-left-warning {
+        border-left: 0.25rem solid #f6c23e !important;
+    }
+
+    .text-gray-300 {
+        color: #dddfeb !important;
+    }
+
+    .text-gray-800 {
+        color: #5a5c69 !important;
+    }
+
+    .chart-area {
+        position: relative;
+        height: 20rem;
+        width: 100%;
+    }
+
+    .chart-pie {
+        position: relative;
+        height: 15rem;
+        width: 100%;
+    }
+
+    .chart-bar {
+        position: relative;
+        height: 15rem;

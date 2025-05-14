@@ -314,7 +314,16 @@ $(function () {
      // optional
      $('#blogCarousel').carousel({
         interval: 5000
-     });
+	 });
+
+	function showPopup() {
+		document.getElementById("popupMessage").style.display = "block"; // Pop-up'ý aç
+	}
+
+	function closePopup() {
+		document.getElementById("popupMessage").style.display = "none"; // Pop-up'ý kapat
+	}
+
 
 
 });

@@ -1,0 +1,43 @@
+﻿@model List<AcunmedyaAkademiProject2._0.Entities.Category>
+
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">📌 Kategoriler</h2>
+    <br />
+    <br />
+
+    <div class="row">
+        @foreach (var category in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4>@category.CategoryName</h4>
+                    </div>
+                    <div class="card-body">
+                        @if (category.Products != null && category.Products.Any())
+                        {
+                            <ul class="list-group list-group-flush">
+                                @foreach (var product in category.Products)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @product.ProductName
+                                        <span class="badge bg-success">₺@product.Price</span>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p class="text-muted">Bu kategoriye ait ürün bulunmamaktadır.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

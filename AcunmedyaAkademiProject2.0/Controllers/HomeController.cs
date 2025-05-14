@@ -26,5 +26,11 @@ namespace AcunmedyaAkademiProject2._0.Controllers
 
             return View();
         }
+
+        public ActionResult Message()
+        {
+            ViewBag.Message = "Your messages page.";
+            return View();
+        }
     }
 }

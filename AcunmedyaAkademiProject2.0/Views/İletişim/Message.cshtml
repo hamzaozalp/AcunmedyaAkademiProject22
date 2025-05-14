@@ -1,0 +1,45 @@
+﻿<h2>Bizimle İletişime Geçin 🍰</h2>
+
+<div class="contact-container">
+    <div class="contact-info">
+        <p><strong>📍 Adres:</strong> Şehremini Mahallesi, İstanbul, Türkiye</p>
+        <p><strong>📞 Telefon:</strong> +90 555 123 45 67</p>
+        <p><strong>✉️ E-posta:</strong> info@tatlidunyasi.com</p>
+        <p>
+            <strong>📲 Sosyal Medya:</strong>
+            <a href="https://www.instagram.com/tatlidunyasi" target="_blank">Instagram</a> |
+            <a href="https://www.facebook.com/tatlidunyasi" target="_blank">Facebook</a>
+        </p>
+
+        <!-- Çalışma Saatleri -->
+        <p><strong>🕒 Çalışma Saatleri:</strong></p>
+        <ul>
+            <li>Pazartesi - Cuma: 09:00 - 22:00</li>
+            <li>Cumartesi - Pazar: 10:00 - 23:00</li>
+        </ul>
+    </div>
+
+    <!-- Google Maps Entegrasyonu -->
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3..."
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</div>
+
+<!-- Hızlı İletişim Formu -->
+<div class="contact-form">
+    <h3>Bize Mesaj Gönderin</h3>
+    <form action="iletisim.php" method="post">
+        <label for="name">Adınız:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-posta:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Mesajınız:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Gönder</button>
+    </form>
+</div>
